@@ -1,0 +1,8 @@
+# Environment variables
+.env
+
+# Cache directories
+.cache_edit_scores/
+
+# System files
+.DS_Store 
