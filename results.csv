@@ -1,0 +1,5 @@
+file,llm_score,grammar_score,readability_score,composite_score,notes
+sample/Brew your ideas lazily.md,70,100,36.0,69.2,"The draft lacks coherence and clear transitions between ideas, making it difficult to follow the main argument."
+sample/Blindread codebases before you dive in.md,70,100,28.000000000000007,67.6,"The draft lacks coherence and clear transitions between ideas, making it difficult to follow."
+sample/Blind reading codebases and databases.md,70,100,28.000000000000007,67.6,"The draft lacks coherence and clear organization, making it difficult to follow the main ideas."
+sample/Beauty of Zettels.md,70,100,1.999999999999993,62.4,"The draft lacks a clear thesis and cohesive flow, making it difficult to follow the main argument."
