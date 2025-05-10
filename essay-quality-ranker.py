@@ -201,6 +201,7 @@ def main():
     parser.add_argument("--output", "-o", type=Path, help="Optional CSV output file")
     parser.add_argument("--weights", nargs=3, type=float, metavar=("LLM", "GRAM", "READ"), default=(0.6, 0.2, 0.2))
     parser.add_argument("--model", default="gpt-4o-mini", help="OpenAI model name")
+    parser.add_argument("--json", action="store_true", help="Output results as JSON instead of a table")
     args = parser.parse_args()
 
     md_files: List[Path] = list(args.folder.glob("**/*.md"))
@@ -215,6 +216,20 @@ def main():
         results.append(process_file(fp, args.weights, cache_dir, args.model))
 
     results.sort(key=lambda r: r["composite_score"], reverse=True)
+
+    # Output JSON if requested
+    if args.json:
+        # Prepare results for JSON output, using relative paths
+        base_path = str(args.folder.resolve())
+        for r in results:
+            # Convert to relative path for Obsidian linking
+            full_path = r["file"]
+            if full_path.startswith(base_path):
+                r["file"] = full_path[len(base_path):].lstrip('/\\')
+        
+        # Print the JSON output
+        print(json.dumps(results))
+        return
 
     # Output results to CLI using Rich
     console = Console()
